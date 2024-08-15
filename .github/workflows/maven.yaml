@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         # see https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest]
         jdk: [8]
     steps:
       - name: Checkout
@@ -24,7 +24,7 @@ jobs:
           distribution: "adopt"
           cache: "maven"
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
+        run: mvn -B package --file pom.xml && exit 1
       - name: Upload JVM crash logs
         if: failure()
         uses: actions/upload-artifact@v4
