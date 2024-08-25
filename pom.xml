@@ -504,9 +504,6 @@
                         <configuration>
                             <excludes>
                                 <exclude>**/NormalMsgDelayIT.java</exclude>
-                                <exclude>**/ClusterGrpcIT.java</exclude>
-                                <exclude>**/NotificationIT.java</exclude>
-                                <exclude>**/LocalGrpcIT.java</exclude>
                             </excludes>
                         </configuration>
                         <executions>
