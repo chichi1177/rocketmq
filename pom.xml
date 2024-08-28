@@ -505,11 +505,6 @@
                             <excludes>
                                 <exclude>**/NormalMsgDelayIT.java</exclude>
                             </excludes>
-                            <includes>
-                                <include>**/ClusterGrpcIT.java</include>
-                                <include>**/LocalGrpcIT.java</include>
-                                <include>**/NotificationIT.java</include>
-                            </includes>
                         </configuration>
                         <executions>
                             <execution>
