@@ -14,9 +14,6 @@ jobs:
         os: [ubuntu-latest]
         jdk: [8]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
       - name: Cache Maven Repos
         uses: actions/cache@v4
         with:
@@ -24,6 +21,9 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
+
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Set up JDK ${{ matrix.jdk }}
         uses: actions/setup-java@v2
