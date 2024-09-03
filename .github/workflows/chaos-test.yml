@@ -52,8 +52,7 @@ jobs:
         with:
           name: rocketmq
           path: rocketmq
-        # 在这里，修改启动脚本，一起启动sshd
-        # rocketmq/rocketmq*/rocketmq*/bin/mqbroker   rocketmq/rocketmq*/rocketmq*/bin/mqnamesrv
+        # Modify the startup script of broker and nameserver to start sshd together
       - name: update start script
         run: |
           path=$(echo ./rocketmq/rocketmq*/rocketmq*/bin/)
@@ -62,7 +61,7 @@ jobs:
 
       - name: docker-login
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login registry.cn-guangzhou.aliyuncs.com --username=aliyun3982714546 --password-stdin
-        # 修改Dockerfile，在镜像中添加sshd服务
+        # Modify the Dockerfile to add the sshd service to the image
       - name: append to Dockerfile
         run: |
           cat <<EOL >> rocketmq-docker/image-build-ci/Dockerfile-${{ matrix.base-image }}
@@ -127,7 +126,7 @@ jobs:
       - uses: chi3316/rocketmq-test-tool@66673f509f0a9cde2df5b4ff6243830b06ff40f1
         name: Deploy rocketmq
         with:
-          # TODO : 这里要改一下chart : 暴露22端口; 增加1个broker副本
+          # TODO: Unable to modify the chart configuration here
           action: "deploy"
           ask-config: "${{ secrets.ASK_CONFIG_VIRGINA }}"
           test-version: "${{ matrix.version }}"
