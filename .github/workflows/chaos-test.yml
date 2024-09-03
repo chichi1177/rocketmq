@@ -161,7 +161,7 @@ jobs:
           action: "chaos-test"
           ask-config: "${{ secrets.ASK_CONFIG_VIRGINA }}"
           job-id: ${{ strategy.job-index }}
-          openchaos-driver: ".github/chaos-configs/driver.yaml"
+          openchaos-driver: ".github/chaos-configs/driver.yml"
           chaos-mesh-fault-file: ".github/chaos-configs/pod-failure.yml"
           fault-scheduler-interval: "60"
           openchaos-args: "-t 300"
