@@ -62,10 +62,10 @@ jobs:
 
       - name: docker-login
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login registry.cn-guangzhou.aliyuncs.com --username=aliyun3982714546 --password-stdin
-      - name: append to Dockerfile
         # 修改Dockerfile，在镜像中添加sshd服务
+      - name: append to Dockerfile
         run: |
-          cat <<EOL >> Dockerfile-${{ matrix.base-image }}
+          cat <<EOL >> rocketmq-docker/image-build-ci/Dockerfile-${{ matrix.base-image }}
           RUN apt-get update && \\
               apt-get install -y openssh-server && \\
               apt-get clean
@@ -127,7 +127,7 @@ jobs:
       - uses: chi3316/rocketmq-test-tool@66673f509f0a9cde2df5b4ff6243830b06ff40f1
         name: Deploy rocketmq
         with:
-          # 这里要改一下chart : 暴露22端口; 增加1个broker副本
+          # TODO : 这里要改一下chart : 暴露22端口; 增加1个broker副本
           action: "deploy"
           ask-config: "${{ secrets.ASK_CONFIG_VIRGINA }}"
           test-version: "${{ matrix.version }}"
