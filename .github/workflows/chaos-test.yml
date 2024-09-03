@@ -123,7 +123,7 @@ jobs:
       matrix:
         version: ${{ fromJSON(needs.list-version.outputs.version-json) }}
     steps:
-      - uses: chi3316/rocketmq-test-tool/chaos-test-runner@66673f509f0a9cde2df5b4ff6243830b06ff40f1
+      - uses: chi3316/rocketmq-test-tool/chaos-test-runner@46e1b58492a73c88fb1b97217dd8308cfafef7bb
         name: Deploy rocketmq
         with:
           # TODO: Unable to modify the chart configuration here
@@ -155,7 +155,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - uses: chi3316/rocketmq-test-tool/chaos-test-runner@66673f509f0a9cde2df5b4ff6243830b06ff40f1
+      - uses: chi3316/rocketmq-test-tool/chaos-test-runner@46e1b58492a73c88fb1b97217dd8308cfafef7bb
         name: Chaos test
         with:
           action: "chaos-test"
@@ -164,7 +164,7 @@ jobs:
           openchaos-driver: ".github/chaos-configs/driver.yaml"
           chaos-mesh-fault-file: ".github/chaos-configs/pod-failure.yml"
           fault-scheduler-interval: "60"
-          openchaos-args: "-t 600"
+          openchaos-args: "-t 300"
           fault-durition: "60"
           node-lable: "app.kubernetes.io/name=broker"
           meta-node-lable: "app.kubernetes.io/name=nameserver"
@@ -186,7 +186,7 @@ jobs:
       matrix:
         version: ${{ fromJSON(needs.list-version.outputs.version-json) }}
     steps:
-      - uses: chi3316/rocketmq-test-tool/chaos-test-runner@66673f509f0a9cde2df5b4ff6243830b06ff40f1
+      - uses: chi3316/rocketmq-test-tool/chaos-test-runner@46e1b58492a73c88fb1b97217dd8308cfafef7bb
         name: clean
         with:
           action: "clean"
