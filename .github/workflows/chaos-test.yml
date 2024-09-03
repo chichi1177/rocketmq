@@ -164,7 +164,7 @@ jobs:
           openchaos-driver: ".github/chaos-configs/driver.yml"
           chaos-mesh-fault-file: ".github/chaos-configs/pod-failure.yml"
           fault-scheduler-interval: "60"
-          openchaos-args: "-t 300"
+          openchaos-args: "-t 600"
           fault-durition: "60"
           node-lable: "app.kubernetes.io/name=broker"
           meta-node-lable: "app.kubernetes.io/name=nameserver"
@@ -174,7 +174,6 @@ jobs:
         with:
           name: chaos-test-report
           path: chaos-test-report/
-
 
   clean:
     if: always()
