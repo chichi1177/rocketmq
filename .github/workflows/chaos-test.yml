@@ -123,7 +123,7 @@ jobs:
       matrix:
         version: ${{ fromJSON(needs.list-version.outputs.version-json) }}
     steps:
-      - uses: chi3316/rocketmq-test-tool@66673f509f0a9cde2df5b4ff6243830b06ff40f1
+      - uses: chi3316/rocketmq-test-tool/chaos-test-runner@66673f509f0a9cde2df5b4ff6243830b06ff40f1
         name: Deploy rocketmq
         with:
           # TODO: Unable to modify the chart configuration here
@@ -186,7 +186,7 @@ jobs:
       matrix:
         version: ${{ fromJSON(needs.list-version.outputs.version-json) }}
     steps:
-      - uses: chi3316/rocketmq-test-tool@66673f509f0a9cde2df5b4ff6243830b06ff40f1
+      - uses: chi3316/rocketmq-test-tool/chaos-test-runner@66673f509f0a9cde2df5b4ff6243830b06ff40f1
         name: clean
         with:
           action: "clean"
