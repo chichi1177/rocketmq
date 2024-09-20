@@ -3,6 +3,8 @@ name: Performance Benchmark
 on:
   push:
     branches: [feat-benchmark]
+  pull_request:
+    types: [opened, reopened, synchronize]
 
 env:
   MAVEN_OPTS: -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false -Dmaven.wagon.httpconnectionManager.ttlSeconds=120
