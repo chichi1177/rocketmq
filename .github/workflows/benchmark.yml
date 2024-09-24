@@ -139,13 +139,13 @@ jobs:
       matrix:
         version: ${{ fromJSON(needs.list-version.outputs.version-json) }}
     steps:
-      - uses: apache/rocketmq-test-tool@7d84d276ad7755b1dc5cf9657a7a9bff6ae6d288
+      - uses: chi3316/rocketmq-test-tool@726c64fbcb8d6d32b31f626fb24bfbefdbd7f059
         name: e2e test
         with:
           action: "test"
           ask-config: "${{ secrets.ASK_CONFIG_VIRGINA }}"
           test-version: "${{ matrix.version }}"
-          test-code-git: "https://ghproxy.com/https://github.com/apache/rocketmq-e2e"
+          test-code-git: "https://mirror.ghproxy.com/https://github.com/apache/rocketmq-e2e"
           test-code-branch: "master"
           test-code-path: java/e2e
           test-cmd: "mvn -B test"
@@ -175,13 +175,13 @@ jobs:
       matrix:
         version: ${{ fromJSON(needs.list-version.outputs.version-json) }}
     steps:
-      - uses: apache/rocketmq-test-tool@7d84d276ad7755b1dc5cf9657a7a9bff6ae6d288
+      - uses: chi3316/rocketmq-test-tool@726c64fbcb8d6d32b31f626fb24bfbefdbd7f059
         name: e2e test
         with:
           action: "test"
           ask-config: "${{ secrets.ASK_CONFIG_VIRGINA }}"
           test-version: "${{ matrix.version }}"
-          test-code-git: "https://ghproxy.com/https://github.com/apache/rocketmq-e2e"
+          test-code-git: "https://mirror.ghproxy.com/https://github.com/apache/rocketmq-e2e"
           test-code-branch: "master"
           test-code-path: golang
           test-cmd: |
@@ -216,13 +216,13 @@ jobs:
       matrix:
         version: ${{ fromJSON(needs.list-version.outputs.version-json) }}
     steps:
-      - uses: apache/rocketmq-test-tool@7d84d276ad7755b1dc5cf9657a7a9bff6ae6d288
+      - uses: chi3316/rocketmq-test-tool@726c64fbcb8d6d32b31f626fb24bfbefdbd7f059
         name: e2e test
         with:
           action: "test"
           ask-config: "${{ secrets.ASK_CONFIG_VIRGINA }}"
           test-version: "${{ matrix.version }}"
-          test-code-git: "https://ghproxy.com/https://github.com/apache/rocketmq-e2e"
+          test-code-git: "https://mirror.ghproxy.com/https://github.com/apache/rocketmq-e2e"
           test-code-branch: "master"
           test-code-path: java/e2e-v4
           test-cmd: "mvn -B test"
