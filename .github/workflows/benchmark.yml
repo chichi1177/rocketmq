@@ -139,7 +139,7 @@ jobs:
       matrix:
         version: ${{ fromJSON(needs.list-version.outputs.version-json) }}
     steps:
-      - uses: chi3316/rocketmq-test-tool@726c64fbcb8d6d32b31f626fb24bfbefdbd7f059
+      - uses: chi3316/rocketmq-test-tool@9615e450c2e9d80320b7ab71b9c760b7cbf2b4eb
         name: e2e test
         with:
           action: "test"
@@ -175,7 +175,7 @@ jobs:
       matrix:
         version: ${{ fromJSON(needs.list-version.outputs.version-json) }}
     steps:
-      - uses: chi3316/rocketmq-test-tool@726c64fbcb8d6d32b31f626fb24bfbefdbd7f059
+      - uses: chi3316/rocketmq-test-tool@9615e450c2e9d80320b7ab71b9c760b7cbf2b4eb
         name: e2e test
         with:
           action: "test"
@@ -216,7 +216,7 @@ jobs:
       matrix:
         version: ${{ fromJSON(needs.list-version.outputs.version-json) }}
     steps:
-      - uses: chi3316/rocketmq-test-tool@726c64fbcb8d6d32b31f626fb24bfbefdbd7f059
+      - uses: chi3316/rocketmq-test-tool@9615e450c2e9d80320b7ab71b9c760b7cbf2b4eb
         name: e2e test
         with:
           action: "test"
