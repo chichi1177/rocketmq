@@ -243,7 +243,9 @@ jobs:
           path: testlog.txt
 
   benchmark-test:
+    if: ${{ success() }}
     runs-on: ubuntu-latest
+    name: Performance benchmark test
     needs: deploy
     timeout-minutes: 60
     steps:
@@ -254,7 +256,6 @@ jobs:
           ask-config: "${{ secrets.ASK_CONFIG_VIRGINA }}"
           job-id: 1
           test-time: "600"
-
       - name: Upload test report
         if: always()
         uses: actions/upload-artifact@v4
