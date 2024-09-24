@@ -130,7 +130,7 @@ jobs:
                   tag: ${{ matrix.version }}
 
   test-e2e-grpc-java:
-    if: ${{ success() }}
+    if: ${{ success() && matrix.test-type == 'e2e' }}
     name: Test E2E grpc java
     needs: [list-version, deploy]
     runs-on: ubuntu-latest
@@ -166,7 +166,7 @@ jobs:
           path: testlog.txt
 
   test-e2e-golang:
-    if: ${{ success() }}
+    if: ${{ success() && matrix.test-type == 'e2e' }}
     name: Test E2E golang
     needs: [list-version, deploy]
     runs-on: ubuntu-latest
@@ -207,7 +207,7 @@ jobs:
           path: testlog.txt
 
   test-e2e-remoting-java:
-    if: ${{ success() }}
+    if: ${{ success() && matrix.test-type == 'e2e' }}
     name: Test E2E remoting java
     needs: [ list-version, deploy ]
     runs-on: ubuntu-latest
@@ -243,7 +243,7 @@ jobs:
           path: testlog.txt
 
   benchmark-test:
-    if: ${{ success() }}
+    if: ${{ success() && matrix.test-type == 'benchmark' }}
     runs-on: ubuntu-latest
     name: Performance benchmark test
     needs: deploy
@@ -266,7 +266,7 @@ jobs:
   clean:
     if: always()
     name: Clean
-    needs: [deploy, benchmark-test]
+    needs: [deploy,test-e2e-grpc-java,test-e2e-golang, test-e2e-remoting-java, benchmark-test]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
