@@ -21,3 +21,8 @@ jobs:
         run: bazel build --config=remote //...
       - name: Run Tests
         run: bazel test --config=remote //...
+      - name: This step conditionally fails
+        run: |
+          sleep 10
+          exit 1
+        if: fromJson(github.run_attempt) < 2
