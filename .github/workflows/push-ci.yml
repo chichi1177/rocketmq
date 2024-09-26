@@ -148,7 +148,7 @@ jobs:
       matrix:
         version: ${{ fromJSON(needs.list-version.outputs.version-json) }}
     steps:
-      - uses: apache/rocketmq-test-tool@7d84d276ad7755b1dc5cf9657a7a9bff6ae6d288
+      - uses: apache/rocketmq-test-tool@b69880a95df7d998b8cb24450eb50836b7111826
         name: e2e test
         with:
           action: "test"
@@ -184,7 +184,7 @@ jobs:
       matrix:
         version: ${{ fromJSON(needs.list-version.outputs.version-json) }}
     steps:
-      - uses: apache/rocketmq-test-tool@7d84d276ad7755b1dc5cf9657a7a9bff6ae6d288
+      - uses: apache/rocketmq-test-tool@b69880a95df7d998b8cb24450eb50836b7111826
         name: e2e test
         with:
           action: "test"
@@ -225,7 +225,7 @@ jobs:
       matrix:
         version: ${{ fromJSON(needs.list-version.outputs.version-json) }}
     steps:
-      - uses: apache/rocketmq-test-tool@7d84d276ad7755b1dc5cf9657a7a9bff6ae6d288
+      - uses: apache/rocketmq-test-tool@b69880a95df7d998b8cb24450eb50836b7111826
         name: e2e test
         with:
           action: "test"
@@ -258,7 +258,7 @@ jobs:
     needs: [ list-version, deploy ]
     timeout-minutes: 60
     steps:
-      - uses: chi3316/rocketmq-test-tool/benchmark-runner@9d8452cb2f25f611e6f7de29a95c781a718ac156
+      - uses: chi3316/rocketmq-test-tool/benchmark-runner@89d3abde74cac994f9a9b3c45bf6ed3096cdc7ea
         name: Performance benchmark
         with:
           action: "performance-benchmark"
