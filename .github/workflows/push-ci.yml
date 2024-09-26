@@ -12,6 +12,7 @@ concurrency:
 env:
   MAVEN_OPTS: -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false -Dmaven.wagon.httpconnectionManager.ttlSeconds=120
   DOCKER_REPO: apache/rocketmq-ci
+  SECRET: $(echo "${{ secrets.ASK_CONFIG_VIRGINA }}" | base64 -w 0)
 
 jobs:
   dist-tar:
@@ -117,7 +118,7 @@ jobs:
         name: Deploy rocketmq
         with:
           action: "deploy"
-          ask-config: "${{ secrets.ASK_CONFIG_VIRGINA }}"
+          ask-config: "${{ env.SECRET }}"
           test-version: "${{ matrix.version }}"
           chart-git: "https://ghproxy.com/https://github.com/apache/rocketmq-docker.git"
           chart-branch: "master"
@@ -151,7 +152,7 @@ jobs:
         name: e2e test
         with:
           action: "test"
-          ask-config: "${{ secrets.ASK_CONFIG_VIRGINA }}"
+          ask-config: "${{ env.SECRET }}"
           test-version: "${{ matrix.version }}"
           test-code-git: "https://ghproxy.com/https://github.com/apache/rocketmq-e2e"
           test-code-branch: "master"
@@ -187,7 +188,7 @@ jobs:
         name: e2e test
         with:
           action: "test"
-          ask-config: "${{ secrets.ASK_CONFIG_VIRGINA }}"
+          ask-config: "${{ env.SECRET }}"
           test-version: "${{ matrix.version }}"
           test-code-git: "https://ghproxy.com/https://github.com/apache/rocketmq-e2e"
           test-code-branch: "master"
@@ -228,7 +229,7 @@ jobs:
         name: e2e test
         with:
           action: "test"
-          ask-config: "${{ secrets.ASK_CONFIG_VIRGINA }}"
+          ask-config: "${{ env.SECRET }}"
           test-version: "${{ matrix.version }}"
           test-code-git: "https://ghproxy.com/https://github.com/apache/rocketmq-e2e"
           test-code-branch: "master"
@@ -261,7 +262,7 @@ jobs:
         name: Performance benchmark
         with:
           action: "performance-benchmark"
-          ask-config: "${{ secrets.ASK_CONFIG_VIRGINA }}"
+          ask-config: "${{ env.SECRET }}"
           job-id: 1
           test-time: "600"
       - name: Upload test report
@@ -287,7 +288,7 @@ jobs:
         name: clean
         with:
           action: "clean"
-          ask-config: "${{ secrets.ASK_CONFIG_VIRGINA }}"
+          ask-config: "${{ env.SECRET }}"
           test-version: "${{ matrix.version }}"
           job-id: ${{ strategy.job-index }}
           
