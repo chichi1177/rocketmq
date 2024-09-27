@@ -101,7 +101,7 @@ jobs:
         test-type: [e2e, benchmark]
     steps:
       - run: echo "Running test type ${{ matrix.test-type }}"
-      - uses: chi3316/rocketmq-test-tool/benchmark-runner@9d8452cb2f25f611e6f7de29a95c781a718ac156
+      - uses: chi3316/rocketmq-test-tool/benchmark-runner@e670a74fe1f0ccbe1d28081dbf6c0fc35372b885
         name: Deploy rocketmq
         with:
           action: "deploy"
@@ -137,7 +137,7 @@ jobs:
     needs: deploy
     timeout-minutes: 60
     steps:
-      - uses: chi3316/rocketmq-test-tool/benchmark-runner@9d8452cb2f25f611e6f7de29a95c781a718ac156
+      - uses: chi3316/rocketmq-test-tool/benchmark-runner@e670a74fe1f0ccbe1d28081dbf6c0fc35372b885
         name: Performance benchmark
         with:
           action: "performance-benchmark"
@@ -162,7 +162,7 @@ jobs:
         test-type: [ e2e, benchmark ]
     steps:
       - run: echo "Cleaning test type ${{ matrix.test-type }}"
-      - uses: chi3316/rocketmq-test-tool/benchmark-runner@9d8452cb2f25f611e6f7de29a95c781a718ac156
+      - uses: chi3316/rocketmq-test-tool/benchmark-runner@e670a74fe1f0ccbe1d28081dbf6c0fc35372b885
         name: clean
         with:
           action: "clean"
